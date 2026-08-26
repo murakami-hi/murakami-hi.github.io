@@ -1,0 +1,34 @@
+---
+import { profile } from "../data/profile";
+import { researchThemes } from "../data/research";
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="トップページへ">
+    <span class="brand-mark" aria-hidden="true">
+      <img src="/assets/logo.svg" alt="" />
+    </span>
+    <span>{profile.nameEn}</span>
+  </a>
+  <nav class="site-nav" aria-label="主要ナビゲーション">
+    <a href="/#about">About</a>
+    <a href="/#research">Research</a>
+    <div class="nav-dropdown">
+      <a href="/#projects" class="nav-dropdown-trigger" aria-haspopup="true">Projects</a>
+      <div class="nav-dropdown-panel">
+        {researchThemes.map((theme) => (
+          <section class="nav-dropdown-group" aria-label={theme.title}>
+            <a class="nav-dropdown-theme" href={`/research/themes/${theme.id}/`}>{theme.title}</a>
+            {theme.projects.map((project) => (
+              <a class="nav-dropdown-project" href={`/research/themes/${theme.id}/#${project.slug}`}>
+                {project.title}
+              </a>
+            ))}
+          </section>
+        ))}
+      </div>
+    </div>
+    <a href="/activities/">Activities</a>
+    <a href="/publications/">Publications</a>
+  </nav>
+</header>

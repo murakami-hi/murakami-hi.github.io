@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2902.68 2902.68">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #231815;
+        stroke-width: 40px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-5 {
+        fill: #231815;
+      }
+
+      .cls-2 {
+        stroke: #9fa0a0;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-width: 150px;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        fill: none;
+        stroke-linecap: round;
+      }
+
+      .cls-3 {
+        stroke: #4169e1;
+      }
+
+      .cls-4 {
+        stroke: #c9caca;
+        stroke-width: 80px;
+      }
+    </style>
+  </defs>
+  <g>
+    <line class="cls-2" x1="459.21" y1="2310.98" x2="459.21" y2="559.32"/>
+    <line class="cls-2" x1="459.21" y1="559.32" x2="1451.34" y2="1740.02"/>
+    <line class="cls-2" x1="1451.34" y1="1740.02" x2="2443.46" y2="559.32"/>
+    <line class="cls-2" x1="2443.46" y1="2310.98" x2="2443.46" y2="559.32"/>
+  </g>
+  <g>
+    <line class="cls-4" x1="2198.76" y1="1740.02" x2="1635.48" y2="346.72"/>
+    <line class="cls-4" x1="459.18" y1="559.32" x2="175.75" y2="1740.02"/>
+    <line class="cls-4" x1="459.21" y1="2310.98" x2="175.75" y2="1740.02"/>
+    <line class="cls-4" x1="1102.49" y1="2606.1" x2="623.69" y2="1740.02"/>
+    <line class="cls-4" x1="1102.49" y1="2606.1" x2="459.21" y2="2310.98"/>
+    <line class="cls-4" x1="1456.24" y1="1740.02" x2="1102.49" y2="2606.1"/>
+    <line class="cls-4" x1="1039.11" y1="724.35" x2="459.21" y2="559.34"/>
+    <line class="cls-4" x1="1635.48" y1="346.72" x2="1039.11" y2="724.35"/>
+    <line class="cls-4" x1="2443.46" y1="559.32" x2="1635.48" y2="346.72"/>
+    <line class="cls-4" x1="2443.46" y1="2282.74" x2="1456.24" y2="1740.02"/>
+    <line class="cls-4" x1="2443.46" y1="2282.74" x2="1817.75" y2="2620.27"/>
+    <line class="cls-4" x1="2726.93" y1="1740.02" x2="2443.46" y2="2282.74"/>
+    <line class="cls-4" x1="2726.93" y1="1740.02" x2="2443.46" y2="559.32"/>
+    <line class="cls-4" x1="1635.48" y1="346.72" x2="459.21" y2="559.34"/>
+    <line class="cls-4" x1="1596.89" y1="1022.64" x2="1039.11" y2="724.35"/>
+    <line class="cls-4" x1="2443.46" y1="559.32" x2="1596.89" y2="1022.64"/>
+    <line class="cls-4" x1="1451.34" y1="1752.02" x2="623.69" y2="1740.02"/>
+    <line class="cls-4" x1="1596.89" y1="1022.64" x2="1451.34" y2="1752.02"/>
+    <line class="cls-4" x1="1817.75" y1="2620.27" x2="1102.49" y2="2606.1"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="623.69" y1="1740.02" x2="175.75" y2="1740.02"/>
+    <line class="cls-3" x1="1039.11" y1="724.35" x2="623.69" y2="1740.02"/>
+    <line class="cls-3" x1="1817.75" y1="2620.27" x2="1039.11" y2="724.35"/>
+    <line class="cls-3" x1="2185.06" y1="1740.02" x2="1817.75" y2="2620.27"/>
+    <line class="cls-3" x1="2726.93" y1="1740.02" x2="2185.06" y2="1740.02"/>
+  </g>
+  <circle class="cls-1" cx="459.18" cy="2310.98" r="113.39"/>
+  <circle class="cls-1" cx="1451.34" cy="1740.02" r="113.39"/>
+  <circle class="cls-1" cx="2443.46" cy="559.32" r="113.39"/>
+  <circle class="cls-1" cx="2443.46" cy="2282.74" r="113.39"/>
+  <circle class="cls-5" cx="175.75" cy="1740.02" r="99.21"/>
+  <circle class="cls-5" cx="2726.93" cy="1740.02" r="99.21"/>
+  <circle class="cls-5" cx="1039.11" cy="724.35" r="99.21"/>
+  <circle class="cls-5" cx="623.69" cy="1740.02" r="99.21"/>
+  <circle class="cls-5" cx="1817.75" cy="2620.27" r="99.21"/>
+  <circle class="cls-5" cx="1635.48" cy="346.72" r="99.21"/>
+  <circle class="cls-1" cx="1102.49" cy="2606.1" r="113.39"/>
+  <circle class="cls-1" cx="1596.89" cy="1022.64" r="113.39"/>
+  <circle class="cls-1" cx="459.21" cy="559.32" r="113.39"/>
+  <circle class="cls-5" cx="2198.76" cy="1740.02" r="99.21"/>
+</svg>

@@ -1,0 +1,42 @@
+---
+import { aboutParagraphs, collaborationMessage, profile } from "../data/profile";
+---
+
+<section id="about" class="hero" aria-labelledby="hero-title">
+  <div class="portrait-panel">
+    <figure class="portrait">
+      <img src="/assets/murakami_lab.JPG" alt="村上弘晃のポートレート写真" />
+    </figure>
+    <div class="identity">
+      <p class="eyebrow">The University of Tokyo</p>
+      <h1 id="hero-title">{profile.nameJa}</h1>
+      <p class="name-en">{profile.nameEn}</p>
+      <p>{profile.position}</p>
+      <a class="identity-email" href={`mailto:${profile.email}`}>{profile.emailDisplay}</a>
+      <nav class="profile-links" aria-label="プロフィール外部リンク">
+        {profile.links.map((link) => (
+          <a class={`profile-icon-link ${link.icon === "researchmap" ? "researchmap-link" : ""}`} href={link.href} target="_blank" rel="noreferrer" aria-label={link.label} title={link.label}>
+            {link.icon === "scholar" ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 2.5 8.2 12 13.4l9.5-5.2L12 3Z" />
+                <path d="M6.5 11v4.5c0 1.8 2.5 3.2 5.5 3.2s5.5-1.4 5.5-3.2V11L12 14l-5.5-3Z" />
+              </svg>
+            ) : (
+              <span class="researchmap-wordmark" aria-hidden="true">researchmap</span>
+            )}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
+
+  <div class="hero-statement">
+    <h2>センシングとAIで、実世界を理解し、働きかける。</h2>
+    <div class="hero-about">
+      <p class="lead-text" set:html={aboutParagraphs[0]} />
+      <p class="eyebrow">About Me</p>
+      {aboutParagraphs.slice(1).map((paragraph) => <p set:html={paragraph} />)}
+      <p class="collaboration-note" set:html={collaborationMessage} />
+    </div>
+  </div>
+</section>

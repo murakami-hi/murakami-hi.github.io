@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SiteHeader from "../../../components/SiteHeader.astro";
+import Footer from "../../../components/Footer.astro";
+import { researchThemes, type ResearchProject } from "../../../data/research";
+
+export function getStaticPaths() {
+  return researchThemes.map((theme) => ({
+    params: { id: theme.id },
+    props: { theme },
+  }));
+}
+
+const { theme } = Astro.props;
+
+type ProjectBadge = NonNullable<ResearchProject["badges"]>[number];
+
+const projectBadgesFor = (project: ResearchProject): ProjectBadge[] =>
+  project.badges ??
+  [
+    {
+      label: project.badge,
+      href: project.badgeHref,
+      type: project.award
+        ? "award"
+        : project.status === "preparation" || project.status === "ongoing"
+          ? "muted"
+          : "venue",
+    },
+  ];
+
+const badgeClassFor = (type: ProjectBadge["type"]) =>
+  type === "award" ? "badge-award" : type === "muted" ? "badge-muted" : "badge-venue";
+---
+
+<BaseLayout title={`${theme.title} | Research Theme`} description={theme.lead[0]}>
+  <SiteHeader />
+  <main class="theme-page">
+    <a class="back-link" href="/#research">← Researchへ戻る</a>
+    <header class="theme-page-hero">
+      <p class="eyebrow">Research Theme</p>
+      <h1>{theme.title}</h1>
+      <p class="theme-page-en">{theme.titleEn}</p>
+    </header>
+
+    <section class="theme-page-copy" aria-label={`${theme.title}の説明`}>
+      {theme.lead.map((paragraph) => <p set:html={paragraph} />)}
+    </section>
+
+    <section class="theme-projects" aria-labelledby="theme-projects-title">
+      <p class="section-kicker">Selected Research</p>
+      <h2 id="theme-projects-title">研究プロジェクト</h2>
+      <div class="theme-project-list">
+        {theme.projects.map((project, index) => (
+          <article id={project.slug} class={`theme-project-item ${project.media ? "theme-project-item-with-media" : ""}`}>
+            <div class="theme-project-index">{String(index + 1).padStart(2, "0")}</div>
+            <div class="theme-project-layout">
+              {project.media?.type === "youtube" && (
+                <div class="theme-project-media">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${project.media.id}?autoplay=1&mute=1&playsinline=1&rel=0`}
+                    title={project.media.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  />
+                </div>
+              )}
+              {project.media?.type === "image" && (
+                <figure class="theme-project-media theme-project-image">
+                  <img src={project.media.src} alt={project.media.alt} loading="lazy" />
+                </figure>
+              )}
+              <div class="theme-project-content">
+                <div class="theme-project-heading">
+                  <h3>{project.title}</h3>
+                </div>
+                <div class="theme-project-summary">
+                  {project.summary.split("\n\n").map((paragraph) => <p set:html={paragraph} />)}
+                </div>
+                {project.note && <p class="project-note">{project.note}</p>}
+                <div class="theme-project-badges" aria-label={`${project.title}の関連業績`}>
+                  {projectBadgesFor(project).map((badge) =>
+                    badge.href ? (
+                      <a class={`badge ${badgeClassFor(badge.type)}`} href={badge.href}>{badge.label}</a>
+                    ) : (
+                      <span class={`badge ${badgeClassFor(badge.type)}`}>{badge.label}</span>
+                    ),
+                  )}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

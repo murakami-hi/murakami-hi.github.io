@@ -1,0 +1,36 @@
+---
+const highlights = [
+  "IEEE IPIN Best Paper Award",
+  "情報処理学会論文誌 論文賞",
+  "JST ACT-X 研究代表",
+  "科研費 基盤研究(B) 研究代表",
+];
+
+const news = [
+  { date: "2026", text: "IEEE PerCom Workshops 2026で研究成果を発表予定。" },
+  { date: "2025", text: "CAADRIA 2025で建物環境センシングに関する研究成果を発表。" },
+  { date: "2024", text: "ACM BuildSys 2024でLLMを活用した座席推薦に関する研究成果を発表。" },
+];
+---
+
+<section class="section split-section" aria-labelledby="highlights-title">
+  <div>
+    <div class="section-kicker">Highlights</div>
+    <h2 id="highlights-title">Highlights / Achievements</h2>
+    <ul class="highlight-list">
+      {highlights.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+  <div>
+    <div class="section-kicker">News</div>
+    <h2>News</h2>
+    <ol class="news-list">
+      {news.map((item) => (
+        <li>
+          <time>{item.date}</time>
+          <span>{item.text}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

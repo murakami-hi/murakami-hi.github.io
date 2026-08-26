@@ -1,0 +1,16 @@
+---
+import ResearchThemeCard from "./ResearchThemeCard.astro";
+import { researchIntro, researchThemes } from "../data/research";
+---
+
+<section id="research" class="section research-section" aria-labelledby="research-title">
+  <div class="section-kicker">Research</div>
+  <div class="research-intro">
+    <h2 id="research-title">研究テーマ</h2>
+  </div>
+  <p class="research-lead">{researchIntro}</p>
+
+  <div id="projects" class="theme-card-list">
+    {researchThemes.map((theme) => <ResearchThemeCard theme={theme} />)}
+  </div>
+</section>

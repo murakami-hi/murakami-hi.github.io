@@ -1,0 +1,27 @@
+---
+import type { ResearchProject } from "../data/research";
+
+type Props = {
+  project: ResearchProject;
+};
+
+const { project } = Astro.props;
+const badgeClass = project.award
+  ? "badge badge-award"
+  : project.status === "preparation" || project.status === "ongoing"
+    ? "badge badge-muted"
+    : "badge badge-venue";
+---
+
+<a class="project-card" href={`/research/${project.slug}/`} aria-label={`${project.title} の詳細を見る`}>
+  <div class="project-visual" aria-hidden="true">
+    <span>{project.themeId === "spatial-sensing" ? "Spatial Sensing" : "Building Intelligence"}</span>
+  </div>
+  <div class="project-body">
+    <span class={badgeClass}>{project.badge}</span>
+    <h4>{project.title}</h4>
+    <p>{project.summary}</p>
+    {project.note && <p class="project-note">{project.note}</p>}
+    <span class="view-link">View Project <span aria-hidden="true">→</span></span>
+  </div>
+</a>

@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { awards, invitedTalks } from "../data/activities";
+import { profile } from "../data/profile";
+---
+
+<BaseLayout
+  title={`Activities | ${profile.nameEn}`}
+  description="受賞および講演の一覧です。"
+>
+  <SiteHeader />
+  <main class="activities-page">
+    <header class="activities-hero">
+      <h1>Activities</h1>
+      <p>受賞および講演を掲載しています。</p>
+    </header>
+
+    <section class="activity-section" aria-labelledby="talks-title">
+      <h2 id="talks-title">Talks</h2>
+      <div class="activity-list">
+        {invitedTalks.map((talk) => (
+          <article class="activity-item">
+            <span class="activity-date">{talk.date}</span>
+            <div class="activity-body">
+              <h3>{talk.title}</h3>
+              <p>{talk.event}</p>
+              {talk.location && <p>{talk.location}</p>}
+              {talk.links && (
+                <div class="activity-link-row">
+                  {talk.links.map((link) => (
+                    <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="activity-section" aria-labelledby="awards-title">
+      <h2 id="awards-title">Awards</h2>
+      <div class="activity-list">
+        {awards.map((award) => (
+          <article class="activity-item">
+            <span class="activity-date">{award.date}</span>
+            <div class="activity-body">
+              <h3>{award.title}</h3>
+              <p>{award.work}</p>
+              <p>{award.organization}</p>
+              {award.links && (
+                <div class="activity-link-row">
+                  {award.links.map((link) => (
+                    <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

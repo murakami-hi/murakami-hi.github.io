@@ -1,0 +1,17 @@
+---
+import { aboutParagraphs } from "../data/profile";
+---
+
+<section id="about" class="section about-section" aria-labelledby="about-title">
+  <div class="section-kicker">About Me</div>
+  <div class="section-grid">
+    <div>
+      <h2 id="about-title">センシングとAIで、実世界を理解し、働きかける。</h2>
+    </div>
+    <div class="prose">
+      {aboutParagraphs.map((paragraph, index) => (
+        <p class={index === 0 ? "lead-text" : ""}>{paragraph}</p>
+      ))}
+    </div>
+  </div>
+</section>

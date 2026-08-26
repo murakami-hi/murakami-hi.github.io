@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { publications, publicationLinks, type Publication } from "../data/publications";
+import { profile } from "../data/profile";
+
+const journalPublications = publications.filter((publication) => publication.category === "journal");
+const conferencePublications = publications.filter((publication) => publication.category === "conference");
+
+const renderAuthors = (authors: string[]) =>
+  authors
+    .map((author) => {
+      const normalized = author.replaceAll(" ", "");
+      return normalized.includes("HiroakiMurakami") || normalized.includes("村上弘晃")
+        ? `<strong>${author}</strong>`
+        : author;
+    })
+    .join(", ");
+
+const metadataFor = (publication: Publication) =>
+  [
+    publication.category === "conference" ? publication.publicationType : null,
+    publication.impactFactor && publication.quartile
+      ? `IF ${publication.impactFactor} | ${publication.quartile}`
+      : publication.impactFactor
+        ? `IF ${publication.impactFactor}`
+        : publication.quartile,
+    publication.acceptanceRate ? `Acceptance Rate ${publication.acceptanceRate}` : null,
+  ].filter(Boolean);
+
+const shouldShowYear = (items: Publication[], index: number) =>
+  index === 0 || items[index - 1].year !== items[index].year;
+---
+
+<BaseLayout
+  title={`Publications | ${profile.nameEn}`}
+  description="査読付き論文誌および査読を経て採択された国際会議発表の一覧です。"
+>
+  <SiteHeader />
+  <main class="publications-page">
+    <header class="publications-hero">
+      <h1>研究業績</h1>
+      <p>
+        本ページでは、<span class="topic-highlight">査読付き論文誌</span>および<span class="topic-highlight">査読を経て採択された国際会議発表</span>を掲載しています。
+        その他の研究発表については
+        <a href={publicationLinks.find((link) => link.label === "researchmap")?.href} target="_blank" rel="noreferrer">researchmap</a>
+        をご覧ください。
+      </p>
+    </header>
+
+    <section class="publication-section" aria-labelledby="journal-title">
+      <h2 id="journal-title">論文誌</h2>
+      <div class="publication-list">
+        {journalPublications.map((publication, index) => (
+          <article id={publication.id} class={`publication-item ${index > 0 && journalPublications[index - 1].year !== publication.year ? "publication-year-start" : ""}`}>
+            <div class="publication-main">
+              <span class="publication-year-inline">{shouldShowYear(journalPublications, index) ? publication.year : ""}</span>
+              <div>
+                <h3>{publication.title}</h3>
+                <p class="publication-authors" set:html={renderAuthors(publication.authors)} />
+                <p class="publication-venue">{publication.venue}</p>
+                <div class="publication-meta-line">
+                  {publication.links?.project && <a href={publication.links.project}>Project</a>}
+                  {publication.links?.doi && <a href={publication.links.doi} target="_blank" rel="noreferrer">DOI</a>}
+                  {metadataFor(publication).map((item) => <span class="publication-meta-badge">{item}</span>)}
+                  {publication.award?.map((award) => <span class="publication-meta-badge award-badge">{award}</span>)}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="publication-section" aria-labelledby="conference-title">
+      <h2 id="conference-title">国際会議</h2>
+      <div class="publication-list">
+        {conferencePublications.map((publication, index) => (
+          <article id={publication.id} class={`publication-item ${index > 0 && conferencePublications[index - 1].year !== publication.year ? "publication-year-start" : ""}`}>
+            <div class="publication-main">
+              <span class="publication-year-inline">{shouldShowYear(conferencePublications, index) ? publication.year : ""}</span>
+              <div>
+                <h3>{publication.title}</h3>
+                <p class="publication-authors" set:html={renderAuthors(publication.authors)} />
+                <p class="publication-venue">{publication.venue}</p>
+                <div class="publication-meta-line">
+                  {publication.links?.project && <a href={publication.links.project}>Project</a>}
+                  {publication.links?.doi && <a href={publication.links.doi} target="_blank" rel="noreferrer">DOI</a>}
+                  {metadataFor(publication).map((item) => <span class="publication-meta-badge">{item}</span>)}
+                  {publication.award?.map((award) => <span class="publication-meta-badge award-badge">{award}</span>)}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

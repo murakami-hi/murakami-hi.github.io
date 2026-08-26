@@ -1,0 +1,27 @@
+---
+import type { ResearchTheme } from "../data/research";
+
+type Props = {
+  theme: ResearchTheme;
+};
+
+const { theme } = Astro.props;
+---
+
+<a class="theme-card" href={`/research/themes/${theme.id}/`} aria-label={`${theme.title} の研究プロジェクトを見る`}>
+  <div class="theme-card-image">
+    <img src={theme.image} alt={`${theme.title}の概念図`} />
+  </div>
+  <div class="theme-card-body">
+    <div>
+      <h3>
+        <span>{theme.title}</span>
+        <small>{theme.titleEn}</small>
+      </h3>
+    </div>
+    <div class="theme-card-copy">
+      {theme.lead.map((paragraph) => <p set:html={paragraph} />)}
+    </div>
+    <span class="view-link">View Projects <span aria-hidden="true">→</span></span>
+  </div>
+</a>
