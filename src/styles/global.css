@@ -397,6 +397,10 @@ p {
   white-space: nowrap;
 }
 
+.hero-statement h2 span {
+  display: inline;
+}
+
 .hero-statement {
   min-width: 0;
 }
@@ -1498,7 +1502,11 @@ a.badge:focus-visible {
     max-width: 100%;
     font-size: 1.5rem;
     white-space: normal;
-    text-wrap: balance;
+    text-wrap: auto;
+  }
+
+  .hero-statement h2 span {
+    display: block;
   }
 
   .theme-heading {
