@@ -1495,8 +1495,10 @@ a.badge:focus-visible {
   }
 
   .hero-statement h2 {
-    max-width: 11ch;
+    max-width: 100%;
+    font-size: 1.5rem;
     white-space: normal;
+    text-wrap: balance;
   }
 
   .theme-heading {
