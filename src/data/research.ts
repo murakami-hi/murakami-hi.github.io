@@ -177,7 +177,7 @@ export const researchThemes: ResearchTheme[] = [
         publications: [],
         media: {
           type: "image",
-          src: "/assets/環境センシング.jpg",
+          src: "/assets/environment_sensing.jpg",
           alt: "自律移動ロボットに環境センサと鉛直方向に伸びるアクチュエータを搭載し、建物内の環境データを取得する様子。",
         },
       },
